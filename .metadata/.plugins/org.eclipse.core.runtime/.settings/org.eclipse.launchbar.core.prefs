@@ -1,7 +1,9 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.launchbar.core.descriptorType.default\:I2C_Loop_back,org.eclipse.launchbar.core.descriptorType.default\:TMS570LC43xx.ccxml,org.eclipse.launchbar.core.descriptorType.default\:GIO
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:I2C_Interrupt,org.eclipse.launchbar.core.descriptorType.default\:I2C_Loop_back,org.eclipse.launchbar.core.descriptorType.default\:TMS570LC43xx.ccxml,org.eclipse.launchbar.core.descriptorType.default\:GIO,org.eclipse.launchbar.core.descriptorType.default\:CAN_Loopback,org.eclipse.launchbar.core.descriptorType.default\:ADC_Display
 eclipse.preferences.version=1
+org.eclipse.launchbar.core.descriptorType.default\:ADC_Display/activeLaunchMode=debug
+org.eclipse.launchbar.core.descriptorType.default\:CAN_Loopback/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:GIO/activeLaunchMode=run
 org.eclipse.launchbar.core.descriptorType.default\:GIO/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:TMS570LC43xx.ccxml/activeLaunchMode=run

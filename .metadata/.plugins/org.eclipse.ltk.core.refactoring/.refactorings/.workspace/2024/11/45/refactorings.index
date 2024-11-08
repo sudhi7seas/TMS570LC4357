@@ -1,2 +1,5 @@
 1731006260200	Delete resource 'GIO/main.c'
 1731065189004	Delete resource 'I2C_Loop_back/main.c'
+1731072924386	Delete resource 'I2C_Interrupt/main.c'
+1731074713662	Delete resource 'CAN_Loopback/main.c'
+1731076251317	Delete resource 'ADC_Display/main.c'

@@ -1,3 +1,4 @@
-MODULES_MRU_PATH=D\:\\Workspace\\TMS570LC4357\\I2C_Loop_back\\Debug\\I2C_Loop_back.out
+MODULES_MRU_PATH=D\:\\Workspace\\TMS570LC4357\\I2C_Interrupt\\Debug\\I2C_Interrupt.out
+MODULES_MRU_PATH.1=D\:\\Workspace\\TMS570LC4357\\I2C_Loop_back\\Debug\\I2C_Loop_back.out
 eclipse.preferences.version=1
 useAnnotationsPrefPage=true
