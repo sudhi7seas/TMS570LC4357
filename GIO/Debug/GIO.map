@@ -1,7 +1,7 @@
 ******************************************************************************
                   TI ARM Linker PC v18.1.1                     
 ******************************************************************************
->> Linked Fri Nov  8 15:50:08 2024
+>> Linked Sun Nov 10 00:38:56 2024
 
 OUTPUT FILE NAME:   <GIO.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 000041a4
@@ -12,7 +12,7 @@ MEMORY CONFIGURATION
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
   VECTORS               00000000   00000020  00000020  00000000     X
-  FLASH0                00000020   001fffe0  0000466c  001fb974  R  X
+  FLASH0                00000020   001fffe0  00004628  001fb9b8  R  X
   FLASH1                00200000   00200000  00000000  00200000  R  X
   STACKS                08000000   00001500  00000000  00001500  RW  
   RAM                   08001500   0007eb00  00000000  0007eb00  RW  
@@ -22,11 +22,11 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    0000448c   0000448c    r-x
+00000000    00000000    00004448   00004448    r-x
   00000000    00000000    00000020   00000020    r-x .intvecs
-  00000020    00000020    0000446c   0000446c    r-x .text
-000044a0    000044a0    00000200   00000200    r--
-  000044a0    000044a0    00000200   00000200    r-- .const
+  00000020    00000020    00004428   00004428    r-x .text
+00004460    00004460    00000200   00000200    r--
+  00004460    00004460    00000200   00000200    r-- .const
 
 
 SECTION ALLOCATION MAP
@@ -37,7 +37,7 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    00000020     
                   00000000    00000020     HL_sys_intvecs.obj (.intvecs)
 
-.text      0    00000020    0000446c     
+.text      0    00000020    00004428     
                   00000020    000009c0     HL_pinmux.obj (.text)
                   000009e0    00000998     HL_system.obj (.text)
                   00001378    00000938     HL_sys_vim.obj (.text)
@@ -50,16 +50,16 @@ section   page    origin      length       input sections
                   00003cf0    0000033c     HL_sys_vim.obj (.text:retain)
                   0000402c    00000178     HL_esm.obj (.text:retain)
                   000041a4    000000d8     HL_sys_startup.obj (.text:retain)
-                  0000427c    000000bc     HL_sys_main.obj (.text)
-                  00004338    00000088     HL_notification.obj (.text)
-                  000043c0    00000068     rtsv7R4_A_be_v3D16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
-                  00004428    00000054     HL_rti.obj (.text:retain)
-                  0000447c    00000008     rtsv7R4_A_be_v3D16_eabi.lib : exit.c.obj (.text:abort:abort)
-                  00004484    00000004     HL_sys_startup.obj (.text)
-                  00004488    00000004     HL_sys_phantom.obj (.text:retain)
+                  0000427c    00000088     HL_notification.obj (.text)
+                  00004304    00000078     HL_sys_main.obj (.text)
+                  0000437c    00000068     rtsv7R4_A_be_v3D16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  000043e4    00000054     HL_rti.obj (.text:retain)
+                  00004438    00000008     rtsv7R4_A_be_v3D16_eabi.lib : exit.c.obj (.text:abort:abort)
+                  00004440    00000004     HL_sys_startup.obj (.text)
+                  00004444    00000004     HL_sys_phantom.obj (.text:retain)
 
-.const     0    000044a0    00000200     
-                  000044a0    00000200     HL_sys_vim.obj (.const:s_vim_init)
+.const     0    00004460    00000200     
+                  00004460    00000200     HL_sys_vim.obj (.const:s_vim_init)
 
 .cinit     0    00000020    00000000     UNINITIALIZED
 
@@ -78,12 +78,12 @@ MODULE SUMMARY
        HL_sys_core.obj            964     0         0      
        HL_sys_mpu.obj             876     0         0      
        HL_sys_startup.obj         220     0         0      
-       HL_sys_main.obj            188     0         0      
        HL_notification.obj        136     0         0      
+       HL_sys_main.obj            120     0         0      
        HL_sys_intvecs.obj         32      0         0      
        HL_sys_phantom.obj         4       0         0      
     +--+--------------------------+-------+---------+---------+
-       Total:                     17436   512       0      
+       Total:                     17368   512       0      
                                                            
     C:\ti\ccsv8\tools\compiler\ti-cgt-arm_18.1.1.LTS\lib\rtsv7R4_A_be_v3D16_eabi.lib
        autoinit.c.obj             104     0         0      
@@ -92,14 +92,14 @@ MODULE SUMMARY
        Total:                     112     0         0      
                                                            
     +--+--------------------------+-------+---------+---------+
-       Grand Total:               17548   512       0      
+       Grand Total:               17480   512       0      
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
 address   name                                
 -------   ----                                
-0000447c  C$$EXIT                             
+00004438  C$$EXIT                             
 00002808  IsdwdKeySequenceCorrect             
 UNDEFED   SHT$$INIT_ARRAY$$Base               
 UNDEFED   SHT$$INIT_ARRAY$$Limit              
@@ -109,7 +109,7 @@ UNDEFED   __TI_Handler_Table_Base
 UNDEFED   __TI_Handler_Table_Limit            
 0000397c  __TI_PINIT_Base                     
 00003980  __TI_PINIT_Limit                    
-000043c0  __TI_auto_init_nobinit_nopinit      
+0000437c  __TI_auto_init_nobinit_nopinit      
 ffffffff  __TI_pprof_out_hndl                 
 ffffffff  __TI_prof_data_size                 
 ffffffff  __TI_prof_data_start                
@@ -166,10 +166,10 @@ ffffffff  __c_args__
 00003cc4  _mpuSetRegionTypeAndPermission_     
 00003ca4  _mpuSetRegion_                      
 UNDEFED   _system_post_cinit                  
-0000447c  abort                               
+00004438  abort                               
 ffffffff  binit                               
 000012d0  customTrimLPO                       
-00004370  dmaGroupANotification               
+000042b4  dmaGroupANotification               
 00002878  dwdClearFlag                        
 0000277c  dwdCounterEnable                    
 000027e0  dwdGenerateSysReset                 
@@ -180,8 +180,8 @@ ffffffff  binit
 00002798  dwdSetPreload                       
 00002764  dwwdGetCurrentDownCounter           
 00002718  dwwdInit                            
-000043ac  epcCAMFullNotification              
-000043b0  epcFIFOFullNotification             
+000042f0  epcCAMFullNotification              
+000042f4  epcFIFOFullNotification             
 00001ec0  esmActivateNormalOperation          
 0000200c  esmClearStatus                      
 00002070  esmClearStatusBuffer                
@@ -200,9 +200,9 @@ ffffffff  binit
 000020ac  esmGetStatus                        
 00002178  esmGetStatusBuffer                  
 00002130  esmGetStatusUpper                   
-00004338  esmGroup1Notification               
-0000434c  esmGroup2Notification               
-00004360  esmGroup3Notification               
+0000427c  esmGroup1Notification               
+00004290  esmGroup2Notification               
+000042a4  esmGroup3Notification               
 0000402c  esmHighInterrupt                    
 00001cb0  esmInit                             
 00002228  esmSelfTestStatus                   
@@ -217,26 +217,26 @@ ffffffff  binit
 00003404  gioGetConfigValue                   
 000032c4  gioGetPort                          
 0000313c  gioInit                             
-00004398  gioNotification                     
+000042dc  gioNotification                     
 0000322c  gioSetBit                           
 0000320c  gioSetDirection                     
 0000327c  gioSetPort                          
 000032dc  gioToggleBit                        
-00004484  handlePLLLockFail                   
-0000427c  main                                
+00004440  handlePLLLockFail                   
+00004304  main                                
 00000ba8  mapClocks                           
 00000020  muxInit                             
 00000af4  periphInit                          
-00004488  phantomInterrupt                    
+00004444  phantomInterrupt                    
 00000000  resetEntry                          
-00004428  rtiCompare0Interrupt                
+000043e4  rtiCompare0Interrupt                
 0000294c  rtiDisableNotification              
 00002920  rtiEnableNotification               
 0000296c  rtiGetConfigValue                   
 00002654  rtiGetCurrentTick                   
 00002628  rtiGetPeriod                        
 0000243c  rtiInit                             
-000042b0  rtiNotification                     
+00004344  rtiNotification                     
 00002590  rtiResetCounter                     
 000025fc  rtiSetPeriod                        
 00002530  rtiStartCounter                     
@@ -385,21 +385,21 @@ address   name
 00003cf0  vimECCErrorHandler                  
 0000402c  esmHighInterrupt                    
 000041a4  _c_int00                            
-0000427c  main                                
-000042b0  rtiNotification                     
-00004338  esmGroup1Notification               
-0000434c  esmGroup2Notification               
-00004360  esmGroup3Notification               
-00004370  dmaGroupANotification               
-00004398  gioNotification                     
-000043ac  epcCAMFullNotification              
-000043b0  epcFIFOFullNotification             
-000043c0  __TI_auto_init_nobinit_nopinit      
-00004428  rtiCompare0Interrupt                
-0000447c  C$$EXIT                             
-0000447c  abort                               
-00004484  handlePLLLockFail                   
-00004488  phantomInterrupt                    
+0000427c  esmGroup1Notification               
+00004290  esmGroup2Notification               
+000042a4  esmGroup3Notification               
+000042b4  dmaGroupANotification               
+000042dc  gioNotification                     
+000042f0  epcCAMFullNotification              
+000042f4  epcFIFOFullNotification             
+00004304  main                                
+00004344  rtiNotification                     
+0000437c  __TI_auto_init_nobinit_nopinit      
+000043e4  rtiCompare0Interrupt                
+00004438  C$$EXIT                             
+00004438  abort                               
+00004440  handlePLLLockFail                   
+00004444  phantomInterrupt                    
 ffffffff  __TI_pprof_out_hndl                 
 ffffffff  __TI_prof_data_size                 
 ffffffff  __TI_prof_data_start                

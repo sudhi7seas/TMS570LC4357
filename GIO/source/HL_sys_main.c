@@ -1,65 +1,3 @@
-/** @example example_rtiBlinky.c
-*   This is an example which descibes the steps to create an example application which
-*   toggles the High End Timer (HET) pin 1 based on an RTI timer compare 0 tick of one second.
-*
-*   @b Step @b 1:
-*
-*   Create a new project.
-*
-*   Navigate: -> File -> New -> Project
-*
-*   @image html example_createProject.jpg "Figure: Create a new Project"
-*
-*   @b Step @b 2:
-*
-*   Configure driver code generation:
-*   - Enable RTI driver
-*   - Enable GIO driver
-*   - Disable others
-*
-*   Navigate: -> TMS570LCxx /RM57xx -> Enable Drivers
-*
-*   @image html example_rtiBlinky_enableDrivers.jpg "Figure: Driver Configuration"
-*
-*   @b Step @b 3:
-*
-*   Configure Vectored Interrupt Module Channels:
-*   - Map VIM Channel 2 to RTI Compare 0 interrupt
-*   - Enable VIM Channel 2
-*   - Map VIM Channel 2 to IRQ
-*
-*   Navigate: -> TMS570LCxx /RM5x -> VIM Channel 0-31
-*
-*   @image html example_rtiBlinky_vimChannelView.jpg "Figure: VIM Channel Configuration"
-*
-*   @b Step @b 4:
-*
-*   Configure RTI compare 0 period to 1000 ms:
-*   - Enter 1000.000 to Compare 0 Period edit box
-*
-*   Navigate: -> RTI -> RTI1 Compare
-*
-*   @image html example_rtiBlinky_rti1CompareView.jpg "Figure: RTI Compare Configuration"
-*
-*   @b Step @b 5:
-*
-*   Generate code
-*
-*   Navigate: -> File -> Generate Code
-*
-*   @image html generateCode.jpg "Figure: Generate Code"
-*
-*   @b Step @b 6:
-*
-*   Copy source code below into your application.
-*
-*   The example file example_rtiBlinky.c can also be found in the examples folder: ../HALCoGen/examples
-*
-*   @note HALCoGen generates an enpty main function in sys_main.c,
-*         please make sure that you link in the right main function or copy the source into the user code sections of this file.
-*
-*/
-
 /** @file sys_main.c
 *   @brief Application main file
 *   @date 25.July.2013
@@ -106,6 +44,7 @@
 */
 
 /* USER CODE BEGIN (0) */
+#define PIN_6_7_MASK 0x000000C0
 /* USER CODE END */
 
 /* Include Files */
@@ -141,8 +80,10 @@ void main(void)
     /* Initialize RTI driver */
     rtiInit();
 
+    gioREG->GCR0 = 1U;
+
     /* Set high end timer GIO port hetPort pin direction to all output */
-    gioSetDirection(gioPORTB, 0x000000C0);
+    gioSetDirection(gioPORTB, 0xFF);
 
     /* Enable RTI Compare 0 interrupt notification */
     rtiEnableNotification(rtiREG1,rtiNOTIFICATION_COMPARE0);
@@ -167,8 +108,8 @@ void main(void)
 void rtiNotification(rtiBASE_t *rtiREG, uint32 notification)
 {
 /*  enter user code between the USER CODE BEGIN and USER CODE END. */
-    /* Toggle HET pin 0 */
-    gioSetBit(gioPORTB, 6, !(gioGetBit(gioPORTB, 6)));  // Toggle GIO port B, pin 6 (user LED)
-    gioSetBit(gioPORTB, 7, !(gioGetBit(gioPORTB, 7)));
+    uint32 currentState = gioGetPort(gioPORTB);
+    gioSetPort(gioPORTB, currentState ^ PIN_6_7_MASK);
+
 }
 /* USER CODE END */
